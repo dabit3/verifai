@@ -79,10 +79,10 @@ export async function POST(request: NextRequest) {
         );
   const openaiMaxTokens =
     body.openaiMaxTokens ??
-    parseInt(process.env.OPENAI_MAX_TOKENS ?? "256", 10);
+    parseInt(process.env.OPENAI_MAX_TOKENS ?? "500", 10);
   const eigenMaxTokens =
     body.eigenMaxTokens ??
-    parseInt(process.env.EIGENAI_MAX_TOKENS ?? "256", 10);
+    parseInt(process.env.EIGENAI_MAX_TOKENS ?? "500", 10);
 
   const randomSeedUuid = randomUUID();
   const randomSeed = uuidToSeed(randomSeedUuid);
