@@ -61,6 +61,11 @@ type CompareResult = {
 };
 
 const defaultPrompt = "What are the top 5 restaurants in Tokyo? Names only in a comma separated list.";
+const envSeed = Number.parseInt(
+  process.env.NEXT_PUBLIC_EIGENAI_DEFAULT_SEED ?? "",
+  10
+);
+const defaultSeed = Number.isNaN(envSeed) ? 42 : envSeed;
 
 export default function Home() {
   const { theme } = useTheme();
@@ -68,7 +73,7 @@ export default function Home() {
   const defaultRuns = Math.min(4, MAX_RUNS);
   const [runs, setRuns] = useState(defaultRuns);
   const [runsInput, setRunsInput] = useState(String(defaultRuns));
-  const [eigenSeed, setEigenSeed] = useState(42);
+  const [eigenSeed, setEigenSeed] = useState(defaultSeed);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<CompareResult | null>(null);
@@ -77,7 +82,7 @@ export default function Home() {
     setPrompt(defaultPrompt);
     setRuns(defaultRuns);
     setRunsInput(String(defaultRuns));
-    setEigenSeed(42);
+    setEigenSeed(defaultSeed);
     setResult(null);
     setError(null);
   };
@@ -241,7 +246,7 @@ export default function Home() {
                       }
                     />
                     <p className="text-xs text-muted-foreground">
-                      Same seed ensures identical output for matching prompts (EigenAI).
+                      Same seed ensures identical output for matching prompts (default {defaultSeed}).
                     </p>
                   </div>
                 </div>
@@ -458,11 +463,6 @@ export default function Home() {
                 Demonstrates how UUID-derived seeds produce distinct but
                 reproducible outputs.
               </CardDescription>
-              {result ? (
-                <p className="text-xs text-muted-foreground">
-                  Seed UUID: {result.eigenRandom.seedUuid ?? "n/a"}
-                </p>
-              ) : null}
             </CardHeader>
             {result ? (
               <CardContent className="grid gap-4">
@@ -480,6 +480,11 @@ export default function Home() {
                     <UsageDetails usage={response.usage} />
                   </div>
                 ))}
+                {result.eigenRandom.responses.length > 0 && (
+                  <p className="text-xs text-muted-foreground">
+                    Seed UUID: {result.eigenRandom.seedUuid ?? "n/a"}
+                  </p>
+                )}
                 {result.eigenRandom.responses.length === 0 ? (
                   <p className="text-sm text-muted-foreground">
                     No responses were returned. Check your credentials and model

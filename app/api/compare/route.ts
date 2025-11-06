@@ -73,7 +73,10 @@ export async function POST(request: NextRequest) {
   const eigenSeed =
     Number.isFinite(body.eigenSeed) && body.eigenSeed !== undefined
       ? Math.floor(body.eigenSeed)
-      : Number.parseInt(process.env.EIGENAI_DEFAULT_SEED ?? "42", 10);
+      : Number.parseInt(
+          process.env.NEXT_PUBLIC_EIGENAI_DEFAULT_SEED ?? "42",
+          10
+        );
   const openaiMaxTokens =
     body.openaiMaxTokens ??
     parseInt(process.env.OPENAI_MAX_TOKENS ?? "256", 10);
