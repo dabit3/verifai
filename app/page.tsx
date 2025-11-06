@@ -326,7 +326,7 @@ export default function Home() {
               <div className="flex items-center justify-between">
                 <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-muted/20 px-3 py-1 text-xs font-medium text-muted-foreground">
                   <Zap className="h-4 w-4 text-primary" />
-                  OpenAI sampling
+                  OpenAI
                 </div>
                 <Badge
                   variant="secondary"
