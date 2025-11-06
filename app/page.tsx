@@ -172,8 +172,8 @@ export default function Home() {
             <ShieldCheck className="h-4 w-4 text-current" />
             Deterministic vs non-deterministic inference
           </Badge>
-          <h1 className="text-pretty text-4xl font-semibold tracking-tight sm:text-8xl">
-            VERIFIABLE AI
+          <h1 className="text-pretty text-4xl font-semibold tracking-tight sm:text-[70px]">
+            DETERMINISTIC INFERENCE
           </h1>
           <p className="max-w-3xl text-balance text-muted-foreground sm:text-lg">
             Run the same prompt. OpenAI produces varied responses, while EigenAI returns a seed-controlled response you can reproduce and verify any time.
