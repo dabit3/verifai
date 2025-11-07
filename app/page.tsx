@@ -80,7 +80,7 @@ const defaultSeed = Number.isNaN(envSeed) ? 42 : envSeed;
 export default function Home() {
   const { theme } = useTheme();
   const [prompt, setPrompt] = useState(defaultPrompt);
-  const defaultRuns = Math.min(4, MAX_RUNS);
+  const defaultRuns = Math.min(3, MAX_RUNS);
   const [runs, setRuns] = useState(defaultRuns);
   const [runsInput, setRunsInput] = useState(String(defaultRuns));
   const [eigenSeed, setEigenSeed] = useState(defaultSeed);
