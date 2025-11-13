@@ -102,6 +102,7 @@ export default function Home() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setResult(null);
     setIsLoading(true);
     setError(null);
 
@@ -356,7 +357,9 @@ export default function Home() {
                   ? `${result.openai.runs} run${
                       result.openai.runs === 1 ? "" : "s"
                     } — ${result.openai.model}`
-                  : `Awaiting run`}
+                  : isLoading
+                    ? "Running comparison…"
+                    : "Awaiting run"}
               </CardTitle>
               <CardDescription>
                 Repeated calls vary because sampling, hardware, and load can
@@ -426,7 +429,9 @@ export default function Home() {
                   ? `${result.eigen.runs} run${
                       result.eigen.runs === 1 ? "" : "s"
                     } - seed ${result.eigen.seed}`
-                  : `Awaiting run`}
+                  : isLoading
+                    ? "Running comparison…"
+                    : "Awaiting run"}
               </CardTitle>
               <CardDescription>
                 Identical inputs yield identical outputs. Change the seed to
@@ -504,7 +509,9 @@ export default function Home() {
                   ? `${result.eigenRandom.runs} run${
                       result.eigenRandom.runs === 1 ? "" : "s"
                     } — seed ${result.eigenRandom.seed}`
-                  : `Awaiting run`}
+                  : isLoading
+                    ? "Running comparison…"
+                    : "Awaiting run"}
               </CardTitle>
               <CardDescription>
                 Demonstrates how random seeds produce distinct but
