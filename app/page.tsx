@@ -182,7 +182,7 @@ export default function Home() {
             DETERMINISTIC INFERENCE
           </h1>
           <p className="max-w-3xl text-balance text-muted-foreground sm:text-lg">
-            Run the same prompt. OpenAI produces varied responses, while <a href="https://docs.eigencloud.xyz/eigenai/concepts/eigenai-overview?utm_source=deterministic_inference&utm_medium=website" target="_blank" rel="noopener noreferrer">EigenAI</a> returns a seed-controlled response you can reproduce and verify any time.
+            Run the same prompt. OpenAI produces varied responses, while <a className="font-medium text-blue-700 underline decoration-blue-700/30 underline-offset-2 transition-colors hover:decoration-blue-700 dark:text-blue-400 dark:decoration-blue-400/30 dark:hover:decoration-blue-400" href="https://docs.eigencloud.xyz/eigenai/concepts/eigenai-overview?utm_source=deterministic_inference&utm_medium=website" target="_blank" rel="noopener noreferrer">EigenAI</a> returns a seed-controlled response you can reproduce and verify any time.
           </p>
           <p className="max-w-3xl text-balance text-sm text-muted-foreground">
             To get started with EigenAI, sign up for a free account {" "}
